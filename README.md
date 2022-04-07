@@ -75,5 +75,9 @@ aws sts get-caller-identity
 # Configure new creditials
 # https://www.youtube.com/watch?v=BNH4i7CQ4Oc
 aws configure
+
+# Deploy
+./mvn clean install
+sam deploy -t target/sam.jvm.yaml -g #Quick note on this one, when you updating don't forgot to use the same StackName that you used when you were deploying e.g. Stack Name [sam-app]: quarkus-aws-lambda
 ```
 - [AWS Lamba Deploy Reference](https://www.youtube.com/watch?v=BOvxdY8cSHw)
