@@ -76,3 +76,4 @@ aws sts get-caller-identity
 # https://www.youtube.com/watch?v=BNH4i7CQ4Oc
 aws configure
 ```
+- [Reference](https://www.youtube.com/watch?v=BOvxdY8cSHw)
