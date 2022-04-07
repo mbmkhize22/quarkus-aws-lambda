@@ -52,6 +52,9 @@ If you want to learn more about building native executables, please consult http
 - AWS Lambda HTTP ([guide](https://quarkus.io/guides/amazon-lambda-http)): Allow applications written for a servlet container to run in AWS Lambda
 - RESTEasy JAX-RS ([guide](https://quarkus.io/guides/rest-json)): REST endpoint framework implementing JAX-RS and more
 
+## Setting up propeties based on active profile
+- [Ref 1](https://access.redhat.com/documentation/en-us/red_hat_build_of_quarkus/1.3/html/configuring_your_quarkus_applications/proc-using-configuration-profiles_quarkus-configuration-guide) 
+
 ## Provided Code
 
 ### RESTEasy JAX-RS
