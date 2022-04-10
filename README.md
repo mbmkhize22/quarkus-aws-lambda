@@ -84,3 +84,7 @@ aws configure
 sam deploy -t target/sam.jvm.yaml -g #Quick note on this one, when you updating don't forgot to use the same StackName that you used when you were deploying e.g. Stack Name [sam-app]: quarkus-aws-lambda
 ```
 - [AWS Lamba Deploy Reference](https://www.youtube.com/watch?v=BOvxdY8cSHw)
+
+## H2 Database setup
+- [H2 console - http://localhost:8080/h2](http://localhost:8080/h2)
+- [H2 DB Console setup](https://stackoverflow.com/questions/61853691/how-to-set-h2-database-console-url-in-the-quarkus-application)
