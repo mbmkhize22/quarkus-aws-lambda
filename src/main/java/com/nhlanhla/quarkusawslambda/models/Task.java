@@ -2,6 +2,8 @@ package com.nhlanhla.quarkusawslambda.models;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Task {
@@ -14,6 +16,9 @@ public class Task {
     @OneToOne
     @JoinColumn(name = "userId", referencedColumnName = "userId")
     private User user;
+
+    @OneToMany
+    private List<Atm> atmList = new ArrayList<>();
 
     private LocalDateTime dateAdded;
     private LocalDateTime dateUpdated;
@@ -77,6 +82,14 @@ public class Task {
         this.dateUpdated = LocalDateTime.now();
     }
 
+    public List<Atm> getAtmList() {
+        return atmList;
+    }
+
+    public void setAtmList(List<Atm> atmList) {
+        this.atmList = atmList;
+    }
+
     @Override
     public String toString() {
         return "Task{" +
@@ -84,6 +97,7 @@ public class Task {
                 ", taskGuid='" + taskGuid + '\'' +
                 ", region='" + region + '\'' +
                 ", user=" + user +
+                ", atmList=" + atmList +
                 ", dateAdded=" + dateAdded +
                 ", dateUpdated=" + dateUpdated +
                 '}';

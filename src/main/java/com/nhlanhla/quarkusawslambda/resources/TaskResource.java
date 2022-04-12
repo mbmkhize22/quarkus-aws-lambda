@@ -12,9 +12,11 @@ import javax.ws.rs.core.Response;
 import java.net.URI;
 import java.util.List;
 import java.util.UUID;
+import java.util.logging.Logger;
 
 @Path("/api/v1/task")
 public class TaskResource {
+    Logger LOG = Logger.getLogger(TaskResource.class.getName());
 
     @Inject
     TaskRepository taskRepository;
@@ -39,11 +41,14 @@ public class TaskResource {
         try {
             String guid = UUID.randomUUID().toString().replaceAll("-", "");
             u.setTaskGuid(guid);
+            LOG.info(u.toString());
             taskRepository.persist(u);
+            taskRepository.flush();
             if (taskRepository.isPersistent(u)) {
                 return Response.created(URI.create("created")).build();
             }
         }catch (Exception e) {
+            LOG.severe(e.getMessage());
             return Response.status(Response.Status.BAD_REQUEST.getStatusCode(), e.getMessage()).build();
         }
         return Response.status(Response.Status.BAD_REQUEST).build();
