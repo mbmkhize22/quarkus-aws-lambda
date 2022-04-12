@@ -2,17 +2,18 @@ package com.nhlanhla.quarkusawslambda.models;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 public class Atm {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long atmId;
     private String atmGuid;
     private String atmName;
     private String address;
-    private LocalDate dateAdded;
-    private LocalDate dateUpdated;
+    private LocalDateTime dateAdded;
+    private LocalDateTime dateUpdated;
 
     public Long getAtmId() {
         return atmId;
@@ -46,31 +47,31 @@ public class Atm {
         this.address = address;
     }
 
-    public LocalDate getDateAdded() {
+    public LocalDateTime getDateAdded() {
         return dateAdded;
     }
 
-    public void setDateAdded(LocalDate dateAdded) {
+    public void setDateAdded(LocalDateTime dateAdded) {
         this.dateAdded = dateAdded;
     }
 
-    public LocalDate getDateUpdated() {
+    public LocalDateTime getDateUpdated() {
         return dateUpdated;
     }
 
-    public void setDateUpdated(LocalDate dateUpdated) {
+    public void setDateUpdated(LocalDateTime dateUpdated) {
         this.dateUpdated = dateUpdated;
     }
 
     @PrePersist
     public void prePersist() {
-        this.dateAdded = LocalDate.now();
-        this.dateUpdated = LocalDate.now();
+        this.dateAdded = LocalDateTime.now();
+        this.dateUpdated = LocalDateTime.now();
     }
 
     @PreUpdate
     public void preUpdate() {
-        this.dateUpdated = LocalDate.now();
+        this.dateUpdated = LocalDateTime.now();
     }
 
     @Override

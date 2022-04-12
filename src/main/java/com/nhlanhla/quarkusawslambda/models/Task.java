@@ -4,46 +4,50 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-public class User {
+public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
-    private String userGuid;
-    private String firstName;
-    private String lastName;
+    private Long taskId;
+    private String taskGuid;
+    private String region;
+
+    @OneToOne
+    @JoinColumn(name = "userId", referencedColumnName = "userId")
+    private User user;
+
     private LocalDateTime dateAdded;
     private LocalDateTime dateUpdated;
 
-    public Long getUserId() {
-        return userId;
+    public Long getTaskId() {
+        return taskId;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setTaskId(Long taskId) {
+        this.taskId = taskId;
     }
 
-    public String getUserGuid() {
-        return userGuid;
+    public String getTaskGuid() {
+        return taskGuid;
     }
 
-    public void setUserGuid(String userGuid) {
-        this.userGuid = userGuid;
+    public void setTaskGuid(String taskGuid) {
+        this.taskGuid = taskGuid;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getRegion() {
+        return region;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setRegion(String region) {
+        this.region = region;
     }
 
-    public String getLastName() {
-        return lastName;
+    public User getUser() {
+        return user;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public LocalDateTime getDateAdded() {
@@ -75,11 +79,11 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "userId=" + userId +
-                ", userGuid='" + userGuid + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
+        return "Task{" +
+                "taskId=" + taskId +
+                ", taskGuid='" + taskGuid + '\'' +
+                ", region='" + region + '\'' +
+                ", user=" + user +
                 ", dateAdded=" + dateAdded +
                 ", dateUpdated=" + dateUpdated +
                 '}';
