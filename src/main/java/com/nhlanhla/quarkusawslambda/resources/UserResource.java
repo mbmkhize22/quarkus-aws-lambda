@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriBuilder;
 import java.net.URI;
 import java.util.List;
 import java.util.UUID;
@@ -38,7 +39,9 @@ public class UserResource {
         u.setUserGuid(guid);
         userRepository.persist(u);
         if(userRepository.isPersistent(u)) {
-            return Response.created(URI.create("created")).build();
+            URI userUri = UriBuilder.fromResource(UserResource.class)
+                    .path("/" + u.getUserId()).build();
+            return Response.created(userUri).build();
         }
         return Response.status(Response.Status.BAD_REQUEST).build();
     }
