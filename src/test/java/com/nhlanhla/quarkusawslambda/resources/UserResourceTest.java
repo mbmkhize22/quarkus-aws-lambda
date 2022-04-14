@@ -45,7 +45,11 @@ class UserResourceTest {
                 .get(url)
                 .then()
                 .statusCode(200)
-                .body("size()", is(1));
+                .body(
+                        "size()", is(1),
+                        "[0].firstName", is("Alex"),
+                        "[0].lastName", is("Mkhize")
+                );
         LOG.info("done testing getAll user");
     }
 

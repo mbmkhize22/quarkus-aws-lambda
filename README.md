@@ -90,6 +90,7 @@ sam deploy -t target/sam.jvm.yaml -g #Quick note on this one, when you updating 
 - [H2 DB Console setup](https://stackoverflow.com/questions/61853691/how-to-set-h2-database-console-url-in-the-quarkus-application)
 
 ## Quarkus Testing
+- [Youtube](https://www.youtube.com/watch?v=2ZC-f83GNfI)
 - [Junit5 & Mockito](https://www.infoq.com/articles/testing-quarkus-integration/)
 - [Http Integration Test](https://www.baeldung.com/java-quarkus-testing)
 - [From RedHat](https://access.redhat.com/documentation/en-us/red_hat_build_of_quarkus/1.3/html/getting_started_with_quarkus/proc-quarkus-junit-testing_quarkus-getting-started)
