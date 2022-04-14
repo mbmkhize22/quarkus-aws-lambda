@@ -86,6 +86,35 @@ class UserResourceTest {
 
     @Test
     @Order(4)
+    void update() {
+        LOG.info("start testing update user -> [PUT] " + url);
+        user = new User();
+        user.setFirstName("Trevor");
+        user.setLastName("Noah");
+        user.setUserId(1L);
+        given()
+                .body(user)
+                .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON)
+                .header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON)
+                .when()
+                .put(url)
+                .then()
+                .statusCode(Response.Status.OK.getStatusCode())
+                .body(equalTo("successfully updated " + user.getFirstName()));
+
+        given()
+                .header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON)
+                .when()
+                .get(url + "/{id}", 1)
+                .then()
+                .statusCode(200)
+                .body("firstName", is(user.getFirstName()))
+                .body("lastName", is(user.getLastName()));
+        LOG.info("finish testing update user");
+    }
+
+    @Test
+    @Order(5)
     void delete() {
         LOG.info("start testing delete user -> [DELETE] " + url + "/1");
         given()
@@ -95,6 +124,10 @@ class UserResourceTest {
                 .then()
                 .statusCode(Response.Status.NO_CONTENT.getStatusCode());
 
+        /**
+         * Double checking if it really deleted
+         * This will return 404, NOT_FOUND status because user 1 doesn't exists.
+         */
         given()
                 .header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON)
                 .when()
